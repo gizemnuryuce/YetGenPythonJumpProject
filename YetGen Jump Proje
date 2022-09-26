@@ -1,0 +1,160 @@
+menu= {
+      "Mocha":25,
+      "Latte":20 ,
+      "Americano": 15,
+      "Filtre Kahve": 12,
+  }
+
+
+class KahveOtomati():
+  def __init__ (self, otomat_durum = "Kapalı", boyut="Orta", ekstra_shot = "Hayır" , menu = []):
+   self.otomat_durum = otomat_durum
+   self.boyut=boyut
+   self.ekstra_shot=ekstra_shot
+   self.menu=menu
+  
+  
+
+  def display_menu(self):
+    print("Kahve Menüsü")
+    print("Mochanın fiyatı: " , menu["Mocha"] )
+    print("Lattenin fiyatı: " , menu["Latte"] )
+    print("Americanonun fiyatı: " , menu["Americano"] )
+    print("Filtre Kahvenin fiyatı: " , menu["Filtre Kahve"] ) 
+      
+
+  
+
+  def otomati_ac(self):
+    if(self.otomat_durum =="Açık"):
+      print("Otomat zaten açık")
+    else:
+      print("Otomat açıldı")
+      self.otomat_durum="Açık"
+ 
+  def otomati_kapat(self):
+    if(self.otomat_durum=="Kapalı"):
+      print("Otomat zaten kapalı")
+    else:
+      print("Otomat kapatıldı")
+      self.otomat_durum="Kapalı"
+
+  def miktar_degisimi(self):
+    if(kahve_boyutlari=="Küçük"):
+
+      print("Kahve miktarı azaltılıyor")
+      self.boyut="Küçük"
+    elif(kahve_boyutlari=="Büyük"):
+      print("Kahve miktarı artırılıyor")
+      self.boyut="Büyük"
+    else:
+      print("Kahve miktarı değiştirilmedi")  
+
+ 
+
+  def kahve_ekle(self):
+    if(kahve_eklemek == "Evet"):
+      self.ekstra_shot = "Evet"
+      print("Ekstra kahve eklendi")  
+    elif(kahve_eklemek == "Hayır"):
+      print("Ekstra kahve eklenmedi" )  
+    else:
+      print("Geçersiz işlem yaptınız")  
+
+  
+  def fiyat_guncelleme(self):
+
+    input1=input("Seçtiğiniz kahve: ")
+    if(kahve_boyutlari == "Büyük"):
+      if (input1 == "Mocha" ):
+        yeni_fiyat= (menu["Mocha"] + 4 )
+        print("Mochanın güncel fiyatı: " , yeni_fiyat) 
+      elif(input1=="Latte"):
+        yeni_fiyat= (menu["Latte"] + 4 )
+        print("Lattenin güncel fiyatı" , yeni_fiyat)  
+      elif(input1=="Americano"):
+        yeni_fiyat= (menu["Americano"] + 4 )
+        print("Americanonun güncel fiyatı" , yeni_fiyat)  
+      elif(input1=="Filtre Kahve"):
+       yeni_fiyat= (menu["Filtre Kahve"] + 4 )
+       print("Filtre kahvenin güncel fiyatı" ,yeni_fiyat)      
+
+    elif(kahve_boyutlari == "Küçük"):
+       if (input1 == "Mocha" ):
+         yeni_fiyat= (menu["Mocha"] - 4 )
+         print("Mochanın güncel fiyatı: " ,yeni_fiyat)
+       elif(input1=="Latte"):
+         yeni_fiyat= (menu["Latte"] - 4 )
+         print("Lattenin güncel fiyatı" ,yeni_fiyat)  
+       elif(input1=="Americano"):
+         yeni_fiyat= (menu["Americano"] - 4 )
+         print("Americanonun güncel fiyatı", yeni_fiyat)  
+       elif(input1=="Filtre Kahve"):
+         yeni_fiyat= (menu["Filtre Kahve"] - 4 )
+         print("Filtre kahvenin güncel fiyatı" ,yeni_fiyat)     
+   
+    elif(kahve_boyutlari == "Orta"):
+      print("Fiyatta bir değişiklik yapılmadı")
+      if (input1 == "Mocha" ):
+         yeni_fiyat= (menu["Mocha"] )
+         print("Mochanın güncel fiyatı: " ,yeni_fiyat)
+      elif(input1=="Latte"):
+         yeni_fiyat= (menu["Latte"] )
+         print("Lattenin güncel fiyatı" ,yeni_fiyat)  
+      elif(input1=="Americano"):
+         yeni_fiyat= (menu["Americano"]  )
+         print("Americanonun güncel fiyatı",yeni_fiyat)  
+      elif(input1=="Filtre Kahve"):
+         yeni_fiyat= (menu["Filtre Kahve"] )
+         print("Filtre kahvenin güncel fiyatı" ,yeni_fiyat)   
+
+    else:
+      print("Geçersiz işlem yaptınız")  
+     
+            
+
+         
+otomat = KahveOtomati("Kapalı" , "Orta" , "Hayır")
+
+
+
+print(""" 
+  1.Otomatı Aç
+  2.Menüyü Göster
+  3.Miktarı Değiştirme (ekle/kaldır)
+  4.Kahve Ekle
+  5.Fiyat Güncelleme
+  6.Otomatı Kapatma
+  Çıkmak için qya basın
+  """)
+
+while(True):
+  islem=input("yapacağınız işlem:")
+  if(islem=="q"):
+    print("çıkış yapılıyor")
+    break
+  elif(islem=="1"):
+    otomat.otomati_ac()
+    
+  elif(islem=="2"):
+    otomat.display_menu()
+    
+  elif(islem=="3"):
+    kahve_boyutlari=input("Seçmek istediğiniz boyut nedir? Küçük ,Orta, Büyük: " )
+    otomat.miktar_degisimi()
+  elif(islem=="4"):
+    kahve_eklemek=input("Ekstra kahve eklemek ister misiniz? Evet ya da Hayır yazınız: ")
+    otomat.kahve_ekle()
+    
+  elif(islem=="5"):
+    
+    otomat.fiyat_guncelleme()
+  elif(islem=="6"):
+    otomat.otomati_kapat()
+        
+  else:
+    print("geçersiz işlem")  
+    
+    
+
+
